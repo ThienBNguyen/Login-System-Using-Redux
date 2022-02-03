@@ -1,13 +1,15 @@
-import "./App.scss";
+import React from "react";
+import Login from "./components/Login";
 
-function App() {
-  return (
-    <div className="App">
-      <button class="btn btn-primary" type="button">
-        <i class="fas fa-search fa-sm">jkdfndgklsjd</i>
-      </button>
-    </div>
-  );
-}
+import { selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
+import Logout from "./components/Logout";
+
+const App = () => {
+  const user = useSelector(selectUser);
+  console.log(user);
+
+  return <div>{user ? <Logout /> : <Login />}</div>;
+};
 
 export default App;
